@@ -1,0 +1,253 @@
+
+img{
+  margin-bottom: 2.5rem;
+  width: 60px;
+  height: 75px;
+}
+
+.container-form{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 500px;
+  background-color: #0091D9;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 28px;
+  background-color: #006A9D;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 2.5rem;
+  color: #fff;
+}
+
+.container-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-height: 600px;
+  overflow-x: auto;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.container-content::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.container-content::-webkit-scrollbar-thumb {
+  background: #7ce268b4; 
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.container-content::-webkit-scrollbar-thumb:hover {
+  background: #7ce268b4; 
+}
+
+.container-content::-webkit-scrollbar-track {
+  background: #fff; 
+}
+
+.container-search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.input {
+  padding: 11px;
+  font-size: 16px;
+  width: 400px;
+  flex: 1;
+  border-radius: 8px 0px 0px 8px;
+  border: none;
+}
+
+.input::placeholder {
+  font-size: 14px;
+}
+
+.button {
+  padding: 11px 20px;
+  font-size: 16px;
+  background-color: #0091D9;
+  color: white;
+  border: none;
+  border-radius: 0px 8px 8px 0px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #05a0ee;
+  cursor: pointer;
+}
+
+.error {
+  background-color: #fff;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px;
+  color: red;
+  margin-top: 10px;
+}
+
+.results-lojas{
+  color: #fff;
+  margin-top: 20px;
+}
+.results{
+  color: #05a0ee;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 99px;
+}
+
+.empty-text {
+  color: #fff;
+}
+
+.box-content {
+  margin-top: 10px;
+  background-color: #fff;
+  width: 400px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.box-content:hover{
+  background-color: #9fe092f5;
+  color: #fff;
+  cursor: pointer;
+}
+
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  z-index: 99;
+}
+
+.content-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-info-loja{
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.lojas-clientes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.loader {
+  width: 60px;
+  aspect-ratio: 1;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: -11px;
+  border-radius: 50%;
+  border: 10px solid #05a0ee;
+  animation: l18 2s infinite linear;
+}
+@keyframes l18 {
+    0%   {clip-path:polygon(50% 50%,0 0,0    0,0    0   ,0    0   ,0    0   )}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0   ,100% 0   ,100% 0   )}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    0   )}
+}
+
+@media screen and (max-width: 1080px) {
+  .container-form {
+    max-width: 100%;
+    min-height: 20vh;
+    height: auto;
+    max-height: 100vh;
+    background-color: #006A9D;
+  } 
+
+  .container-content{
+    width: 100%;
+    height: 300px;
+  }
+
+  .box-content{
+    width: 100%;
+    height: 120px;
+  }
+
+  .img-logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .title{
+    font-size: 18px;
+  }
+
+  .input{
+    width: 300px;
+  }
+
+  .container-content{
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+
+  .box-content{
+    width: 100%;
+    height: 100px;
+  }
+}
+
+
+
