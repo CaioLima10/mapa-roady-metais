@@ -14,6 +14,7 @@ interface Props {
   setCep: (value: string) => void
   calcularDistancia: (lat1: number, lon1: number, lat2: number, lon2: number) => number
   coordenadas: Coordenadas
+  showForm: boolean    
 } 
 
 export function Form({ 
@@ -24,6 +25,7 @@ export function Form({
     setCep, 
     calcularDistancia, 
     coordenadas,
+    showForm,
   }: Props) {
 
     const [ isModalContent, setIsModalContent ] = useState(false)
@@ -39,6 +41,7 @@ export function Form({
   return (
     <>
       <div  className="container-form" onClick={(e) => e.stopPropagation()}>
+        { showForm && (
           <form onSubmit={handleSubmit} className="form">
             <h1 className="title">
               Encontre lojas Roady próximas a você
@@ -101,6 +104,7 @@ export function Form({
               ))}
             </div>
           </form>
+          ) }
           </div>
     </>
   )
