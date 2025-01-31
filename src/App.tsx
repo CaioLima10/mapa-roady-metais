@@ -103,7 +103,6 @@ export default function App() {
         lojasProximas={lojasProximas}
         calcularDistancia={calcularDistancia}
         coordenadas={coordenadas}
-        showForm={showForm}
       />
       <Map 
         coordenadas={coordenadas}
