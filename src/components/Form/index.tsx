@@ -75,7 +75,6 @@ export function Form({
                   <FaSearch />
                 </button>
               </div>
-              <p>{cep}</p>
               <p className="results-lojas">
                   Loja encontradas na sua região: 
                   <span className="results" style={{ color: lojasProximas.length === 0 ? "transparent" : "#fff" }}>
