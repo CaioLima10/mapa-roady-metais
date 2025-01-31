@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 1000;
 }
 
 .modal {
@@ -48,9 +48,9 @@
 
 .button-close{
   position: absolute;
-  top: -20px;
-  right: -20px;
-  background-color: #05a0ee;
+  top: 5px;
+  right: 5px;
+  background-color: #fff;
   border-radius: 99px;
   padding: 1rem;
   font-size: 16px;
@@ -58,26 +58,43 @@
   align-items: center;
   justify-content: center;
   border: none;
-  color: #fff;
+  color: #05a0ee;
   cursor: pointer;
+}
+
+.box-midia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  background-color: #ece9e9;
+  margin-top: 10px;
+  padding: 0.250rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 12px;
 }
 
 .button-whats{
   background-color: #2ff108;
-  padding: 1rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 8px;
-  flex: 1;
+  border-radius: 99px;
+  width: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.address-client{
   margin-bottom: 10px;
 }
 
 .button-close:hover {
   background-color: #0592d8;
+  color: #fff;
 }
 
 .button-whats:hover {

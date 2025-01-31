@@ -25,19 +25,6 @@ export default function App() {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 1080) {
-        setShowForm(false);
-      } else {
-        setShowForm(true);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
     const getStores = async () => {
       if (!coordenadas) return;
       try {
@@ -103,13 +90,11 @@ export default function App() {
         lojasProximas={lojasProximas}
         calcularDistancia={calcularDistancia}
         coordenadas={coordenadas}
-        showForm={showForm}
+
       />
       <Map 
         coordenadas={coordenadas}
         lojasProximas={lojasProximas}
-        setShowForm={setShowForm}
-        showForm={showForm}
         mapRef={mapRef}
       />
       <Modal 

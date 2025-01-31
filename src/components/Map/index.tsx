@@ -4,22 +4,18 @@ import { MapContainer, TileLayer, Marker, Popup, Circle, Polyline } from "react-
 import { ClientIcon, lojaIcon } from "../../utils/marketIcons";
 import "./styles.css"
 import { Coordenadas } from "../../utils/types/coordenadas";
-import { FaSearch } from "react-icons/fa";
-import { FaX } from "react-icons/fa6";
+
 import { ForwardedRef } from "react";
 import {  Root } from "../../utils/types/lojas";
 
 interface Props {
   coordenadas: Coordenadas
   lojasProximas: Root[]
-
-  setShowForm: (value: boolean) => void
-  showForm: boolean
   mapRef: ForwardedRef<L.Map | null>
 }
 
 
-export function Map({ coordenadas, lojasProximas, setShowForm, showForm, mapRef }: Props) {
+export function Map({ coordenadas, lojasProximas, mapRef }: Props) {
 
   const getPolylinePositions = () => {
     if (!coordenadas) return [];
@@ -74,21 +70,6 @@ export function Map({ coordenadas, lojasProximas, setShowForm, showForm, mapRef 
           ))}
         </>
       )}
-        {
-          showForm ? (
-            <button 
-              onClick={() => setShowForm(false)} 
-              className="button-search">
-                <FaX size={28}/>
-            </button>
-          ) : (
-            <button 
-              onClick={() => setShowForm(true)} 
-              className="button-search">
-                <FaSearch size={28}/>
-            </button>
-          )
-        }
     </MapContainer>
   )
 }
