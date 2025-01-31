@@ -28,12 +28,13 @@ export function ModalContentStore({ isModalContent, setIsModalContent, loja }: P
                     <button className="button-close" onClick={() => setIsModalContent(false)}>
                       <FaX/>
                     </button>
-                      <a className="button-whats" href={loja.attributes.whatsapp} target="_blank" rel="noreferrer">
-                        <FaWhatsapp size={22} color="#fff"/>
-                      </a>
+                    <div style={{ display: "flex", flexDirection: "column", margin: "auto" }}>
+                      <h1>Entre em contato:</h1><br />
+                        <a className="button-whats" href={`https://wa.me/${loja.attributes.whatsapp}/?text=${encodeURIComponent("Me vim pelo site da Roady Metais")}`} target="_blank" rel="noreferrer">
+                          <FaWhatsapp size={22} color="#fff"/>
+                        </a>
+                    </div>
                   </div>
-                  <span className="text">Ou</span><br/>
-                  <p className="text-phone">Ligue aqui <br/>Telefone: {loja.attributes.telefone }</p>
                 </div>
               </div>
             </div>
