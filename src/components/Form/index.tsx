@@ -1,11 +1,10 @@
-import React, { FormEvent, useEffect, useState } from "react"
-import { FaArrowUp, FaSearch } from "react-icons/fa";
+import React, {  useEffect, useState } from "react"
+import {  FaSearch } from "react-icons/fa";
 import "./styles.css"
 import { Coordenadas } from "../../utils/types/coordenadas";
 import { Root } from "../../utils/types/lojas";
 import { ModalContentStore } from "./modal-content-store";
 import { SiGooglemaps } from "react-icons/si";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 
 
 

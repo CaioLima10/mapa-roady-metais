@@ -19,7 +19,6 @@ export default function App() {
   });
   const [erro, setErro] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [showForm, setShowForm] = useState<boolean>(true);
   const [lojasApi, setLojasApi] = useState<Root[]>([]);
 
   const mapRef = useRef<L.Map | null>(null);
