@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FormEvent, useState } from "react"
 import { FaSearch } from "react-icons/fa";
 import "./styles.css"
 import { Coordenadas } from "../../utils/types/coordenadas";
@@ -31,7 +31,8 @@ export function Form({
     const [ isModalContent, setIsModalContent ] = useState(false)
     const [selectedLoja, setSelectedLoja] = useState<Root | null>(null);
 
-    const handleLojaClick = (loja: Root) => {
+    const handleLojaClick = (loja: Root, e?: FormEvent) => {
+      e?.stopPropagation()
       setSelectedLoja(loja); 
       setIsModalContent(true); 
     };
