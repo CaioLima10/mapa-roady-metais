@@ -72,6 +72,7 @@ export default function App() {
   
 
   const handleSubmit = async (e: React.FormEvent) => {
+    e.stopPropagation()
     e.preventDefault();
       if(!calcularDistancia) {
         setShowModal(true)

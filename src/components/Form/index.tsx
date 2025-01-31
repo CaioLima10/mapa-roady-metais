@@ -40,9 +40,9 @@ export function Form({
 
   return (
     <>
-      <div  className="container-form" onClick={(e) => e.stopPropagation()}>
         { showForm && (
-          <form onSubmit={handleSubmit} className="form">
+      <div  className="container-form" onClick={(e) => e.stopPropagation()}>
+          <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()} className="form">
             <h1 className="title">
               Encontre lojas Roady próximas a você
             </h1>
@@ -104,8 +104,8 @@ export function Form({
               ))}
             </div>
           </form>
-          ) }
           </div>
+          ) }
     </>
   )
 }
