@@ -14,6 +14,7 @@ img{
   border-radius: 4px;
   max-width: 500px;
   background-color: #0091D9;
+  z-index: 98;
 }
 
 .form {

@@ -40,8 +40,8 @@ export function Form({
   return (
     <>
     { showForm && (
-      <div  className="container-form">
-          <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()} className="form">
+      <div  className="container-form" onClick={(e) => e.stopPropagation()}>
+          <form onSubmit={handleSubmit} className="form">
             <h1 className="title">
               Encontre lojas Roady próximas a você
             </h1>
