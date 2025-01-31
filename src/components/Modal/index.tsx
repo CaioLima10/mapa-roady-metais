@@ -22,7 +22,7 @@ export function Modal({ setShowModal, showModal }: Props) {
                   <button className="button-close" onClick={() => setShowModal(false)}>
                     <FaX/>
                   </button>
-                    <a className="button-whats" href="https://w.app/roadymetais" target="_blank" rel="noreferrer">
+                    <a className="button-whats" href={`https://wa.me/551125147914/text=?${encodeURIComponent("Oi! eu vim pelo site da Roady Metais")} target="_blank" rel="noreferrer"`}>
                       <FaWhatsapp size={22} color="#fff"/>
                     </a>
                 </div>

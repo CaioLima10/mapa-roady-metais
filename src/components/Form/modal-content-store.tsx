@@ -1,4 +1,3 @@
-import React from "react"
 import { FaWhatsapp } from "react-icons/fa"
 import { FaX } from "react-icons/fa6"
 import "../Modal/styles.css"
@@ -14,7 +13,6 @@ interface Props {
 }
 
 export function ModalContentStore({ isModalContent, setIsModalContent, loja }: Props) {
-  
   return(
     <>
         { isModalContent && (
@@ -30,8 +28,10 @@ export function ModalContentStore({ isModalContent, setIsModalContent, loja }: P
                     </button>
                     <div style={{ display: "flex", flexDirection: "column", margin: "auto" }}>
                       <h1>Entre em contato:</h1><br />
-                        <a className="button-whats" href={`https://wa.me/${loja.attributes.whatsapp}/?text=${encodeURIComponent("Me vim pelo site da Roady Metais")}`} target="_blank" rel="noreferrer">
-                          <FaWhatsapp size={22} color="#fff"/>
+                        <a className="button-whats" 
+                            href={`https://wa.me/${loja.attributes.whatsapp}/?text=${encodeURIComponent("Oi! eu vim pelo site da Roady Metais")}`} 
+                            target="_blank" rel="noreferrer">
+                            <FaWhatsapp size={22} color="#fff"/>
                         </a>
                     </div>
                   </div>
