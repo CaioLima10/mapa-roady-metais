@@ -54,10 +54,31 @@ export function Form({
       return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+      const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+        if (isModalContent) {
+          setIsModalContent(false);
+        }
+      };
+    
+      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("touchstart", handleOutsideClick);
+    
+      return () => {
+        document.removeEventListener("mousedown", handleOutsideClick);
+        document.removeEventListener("touchstart", handleOutsideClick);
+      };
+    }, [isModalContent]);
+    
+
   return (
     <>
     { showForm ? (
-        <div  className="container-form" onClick={(e) => e.stopPropagation()}>
+        <div  className="container-form" 
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          >
             <form onSubmit={handleSubmit}  className="form">
               <h1 className="title">
                 Encontre lojas Roady próximas a você
@@ -69,6 +90,7 @@ export function Form({
                   value={cep}
                   onChange={(e) => setCep(e.target.value)}
                   className="input"
+                  onTouchStart={(e) => e.stopPropagation()}
                   onClick={(e) => e.stopPropagation()}
                 />
                 <button onClick={(e) => e.stopPropagation()} type="submit" className="button">
