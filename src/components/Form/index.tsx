@@ -31,8 +31,7 @@ export function Form({
     const [ isModalContent, setIsModalContent ] = useState(false)
     const [selectedLoja, setSelectedLoja] = useState<Root | null>(null);
 
-    const handleLojaClick = (loja: Root, e?: FormEvent) => {
-      e?.stopPropagation()
+    const handleLojaClick = (loja: Root) => {
       setSelectedLoja(loja); 
       setIsModalContent(true); 
     };
@@ -40,9 +39,9 @@ export function Form({
 
   return (
     <>
-        { showForm && (
+      { showForm && (
       <div  className="container-form" onClick={(e) => e.stopPropagation()}>
-          <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()} className="form">
+          <form onSubmit={handleSubmit}  className="form">
             <h1 className="title">
               Encontre lojas Roady próximas a você
             </h1>

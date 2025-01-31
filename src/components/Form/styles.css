@@ -212,11 +212,16 @@ img{
     height: auto;
     max-height: 100vh;
     background-color: #006A9D;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
   } 
 
   .container-content{
     width: 100%;
     height: 300px;
+    z-index: 98;
   }
 
   .box-content{
