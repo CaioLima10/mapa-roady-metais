@@ -54,34 +54,16 @@ export function Form({
       return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    useEffect(() => {
-      const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-        if (isModalContent) {
-          setIsModalContent(false);
-        }
-      };
-    
-      document.addEventListener("mousedown", handleOutsideClick);
-      document.addEventListener("touchstart", handleOutsideClick);
-    
-      return () => {
-        document.removeEventListener("mousedown", handleOutsideClick);
-        document.removeEventListener("touchstart", handleOutsideClick);
-      };
-    }, [isModalContent]);
-    
+
 
   return (
     <>
-    { showForm ? (
         <div  className="container-form" 
           onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
           >
             <form onSubmit={handleSubmit}  className="form">
               <h1 className="title">
-                Encontre lojas Roady próximas a você
+               { showForm &&  "Encontre lojas Roady próximas a você"}
               </h1>
               <div className="container-search">
                 <input
@@ -90,8 +72,6 @@ export function Form({
                   value={cep}
                   onChange={(e) => setCep(e.target.value)}
                   className="input"
-                  onTouchStart={(e) => e.stopPropagation()}
-                  onClick={(e) => e.stopPropagation()}
                 />
                 <button onClick={(e) => e.stopPropagation()} type="submit" className="button">
                   <FaSearch />
@@ -151,21 +131,6 @@ export function Form({
               </div>
             </form>
             </div>
-    ): ""}
-     <div className="arrow-show-form"  onClick={() => setShowForm(!showForm)} >
-          {showForm ? 
-            <div className="arrow-show">
-              <span>Ver só MAPA</span>
-              <SlArrowDown color="#fff" size={20}/>
-            </div>
-              :
-            <div className="arrow-show">
-              <span>Pesquisar CEP</span>
-              <span><SlArrowUp color="#fff" size={20}/></span>
-            </div>
-            }
-      </div>
-
     </>
   )
 }
