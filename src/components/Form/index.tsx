@@ -52,8 +52,9 @@ export function Form({
                 value={cep}
                 onChange={(e) => setCep(e.target.value)}
                 className="input"
+                onClick={(e) => e.stopPropagation()}
               />
-              <button type="submit" className="button">
+              <button onClick={(e) => e.stopPropagation()} type="submit" className="button">
                 <FaSearch />
               </button>
             </div>
