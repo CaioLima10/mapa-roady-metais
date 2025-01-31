@@ -1,7 +1,8 @@
 import { FaWhatsapp } from "react-icons/fa"
 import { FaX } from "react-icons/fa6"
 import "../Modal/styles.css"
-import { Attributes } from "../../utils/types/lojas"
+import { Attributes } from "../../../utils/types/lojas"
+import { regexCep } from "../../../utils/regex"
 
 interface Props {
   isModalContent: boolean
@@ -30,7 +31,7 @@ export function ModalContentStore({ isModalContent, setIsModalContent, loja }: P
                     <div style={{ display: "flex", flexDirection: "column", margin: "auto" }}>
                       <div>
                         <span className="address-client">{`${loja.attributes.endereco.bairro}, ${loja.attributes.endereco.numero},
-                          ${loja.attributes.endereco.cidade} - ${loja.attributes.endereco.cep}`}
+                          ${loja.attributes.endereco.cidade} - ${regexCep(loja.attributes.endereco.cep)}`}
                         </span>
                       </div><br />
                           <span>Entre em contato:</span><br />

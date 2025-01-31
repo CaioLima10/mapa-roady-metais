@@ -1,92 +1,109 @@
-import React, {  useEffect, useState } from "react"
-import {  FaSearch } from "react-icons/fa";
-import "./styles.css"
+import React, { useEffect, useState } from "react";
+import { FaSearch, FaWhatsapp } from "react-icons/fa";
+import "./styles.css";
 import { Coordenadas } from "../../utils/types/coordenadas";
 import { Root } from "../../utils/types/lojas";
-import { ModalContentStore } from "./modal-content-store";
+import { ModalContentStore } from "./Modal/modal-content-store";
 import { SiGooglemaps } from "react-icons/si";
-
-
-
+import { regexCep } from "../../utils/regex";
 
 interface Props {
-  erro: string
-  lojasProximas: Root[]
-  handleSubmit: (e: React.FormEvent) => void
-  cep: string
-  setCep: (value: string) => void
-  calcularDistancia: (lat1: number, lon1: number, lat2: number, lon2: number) => number
-  coordenadas: Coordenadas
+  erro: string;
+  lojasProximas: Root[];
+  handleSubmit: (e: React.FormEvent) => void;
+  cep: string;
+  setCep: (value: string) => void;
+  calcularDistancia: (lat1: number, lon1: number, lat2: number, lon2: number) => number;
+  coordenadas: Coordenadas;
+}
 
-} 
+export function Form({
+  erro,
+  lojasProximas,
+  handleSubmit,
+  cep,
+  setCep,
+  calcularDistancia,
+  coordenadas,
+}: Props) {
+  const [isModalContent, setIsModalContent] = useState(false);
+  const [selectedLoja, setSelectedLoja] = useState<Root | null>(null);
+  const [showForm, setShowForm] = useState<boolean>(true);
+  const [pesquisou, setPesquisou] = useState<boolean>(false); 
 
-export function Form({ 
-    erro, 
-    lojasProximas, 
-    handleSubmit, 
-    cep, 
-    setCep, 
-    calcularDistancia, 
-    coordenadas,
-  }: Props) {
+  const handleLojaClick = (loja: Root) => {
+    setSelectedLoja(loja);
+    setIsModalContent(true);
+  };
 
-    const [ isModalContent, setIsModalContent ] = useState(false)
-    const [selectedLoja, setSelectedLoja] = useState<Root | null>(null);
-    const [showForm, setShowForm] = useState<boolean>(true);
-    
-
-    const handleLojaClick = (loja: Root) => {
-      setSelectedLoja(loja); 
-      setIsModalContent(true); 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1080) {
+        setShowForm(false);
+      } else {
+        setShowForm(true);
+      }
     };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    useEffect(() => {
-      const handleResize = () => {
-        if (window.innerWidth <= 1080) {
-          setShowForm(false);
-        } else {
-          setShowForm(true);
-        }
-      };
-      window.addEventListener('resize', handleResize);
-      handleResize();
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  const handleFormSubmit = (e: React.FormEvent) => {
+    handleSubmit(e);
 
-
+    setTimeout(() => {
+      setPesquisou(true); 
+    },500)
+  };
 
   return (
     <>
-        <div  className="container-form" 
-          onClick={(e) => e.stopPropagation()}
-          >
-            <form onSubmit={handleSubmit}  className="form">
-              <h1 className="title">
-               { showForm &&  "Encontre lojas Roady próximas a você"}
-              </h1>
-              <div className="container-search">
-                <input
-                  type="text"
-                  placeholder="Digite seu CEP"
-                  value={cep}
-                  onChange={(e) => setCep(e.target.value)}
-                  className="input"
-                />
-                <button onClick={(e) => e.stopPropagation()} type="submit" className="button">
-                  <FaSearch />
-                </button>
+      <div className="container-form" onClick={(e) => e.stopPropagation()}>
+        <form onSubmit={handleFormSubmit} className="form">
+          <h1 className="title">{showForm && "Encontre lojas Roady próximas a você"}</h1>
+          <div className="container-search">
+            <input
+              type="text"
+              placeholder="Digite seu CEP"
+              value={cep}
+              onChange={(e) => setCep(e.target.value)}
+              className="input"
+            />
+            <button onClick={(e) => e.stopPropagation()} type="submit" className="button">
+              <FaSearch />
+            </button>
+          </div>
+          <div>
+            <p className="results-lojas">
+              Loja encontradas na sua região:{" "}
+              <span
+                className="results"
+                style={{ color: lojasProximas.length === 0 ? "transparent" : "#fff" }}
+              >
+                {lojasProximas.length === 0 ? "" : lojasProximas.length}
+              </span>
+            </p>
+
+            {pesquisou && lojasProximas.length === 0 && (
+              <div className="container-amount">
+                <p className="title-info"> Nenhuma loja encontrada entre em contato conosco </p>
+                <div>
+                  <div className="box-button-whats">
+                    <span>converse conosco -</span>
+                      <a className="button-whats" 
+                        href={`https://wa.me/551125147914/text=?${encodeURIComponent("Oi! eu vim pelo site da Roady Metais")} target="_blank" rel="noreferrer"`}>
+                        <FaWhatsapp size={22} color="#fff"/>
+                      </a>
+                  </div>
+                </div>
+                    <span className="text">Ou</span>
+                    <p className="text-phone">Ligue aqui <br/>Telefone: {'( 11 ) 2514-7914'}</p>
               </div>
-              <p className="results-lojas">
-                  Loja encontradas na sua região: 
-                  <span className="results" style={{ color: lojasProximas.length === 0 ? "transparent" : "#fff" }}>
-                  {lojasProximas.length === 0 ? "" : lojasProximas.length}
-                </span>
-              </p>
-                  {erro && <p className="error">{erro}</p>}
-              <div className="container-content">
+            )}
+            {erro && <p className="error">{erro}</p>}
 
-
-
+            <div className="container-content">
               {lojasProximas
                 .map((loja) => {
                   const distancia = calcularDistancia(
@@ -104,7 +121,7 @@ export function Form({
                       <ModalContentStore
                         isModalContent={isModalContent}
                         setIsModalContent={setIsModalContent}
-                        loja={loja} 
+                        loja={loja}
                       />
                     )}
                     <div onClick={() => handleLojaClick(loja)} className="box-content" key={loja.attributes.endereco.id}>
@@ -114,22 +131,23 @@ export function Form({
                           <span className="text-info-nomeFantasia">{loja.attributes.nome_fantasia}</span>
                           <div className="box-content-text">
                             <span className="text-info-rua">{loja.attributes.endereco.rua}</span>
-                            <span className="text-info-cep">{loja.attributes.endereco.cep}</span>
+                            <span className="text-info-cep">{regexCep(loja.attributes.endereco.cep)}</span>
                           </div>
                           <div className="box-distancia">
-                              <span><SiGooglemaps color="#05a0ee"/></span>
-                            <p>
-                              Distância: {loja.distancia.toFixed(2)} km
-                            </p>
+                            <span>
+                              <SiGooglemaps color="#05a0ee" />
+                            </span>
+                            <p>Distância: {loja.distancia.toFixed(2)} km</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 ))}
-              </div>
-            </form>
             </div>
+          </div>
+        </form>
+      </div>
     </>
-  )
+  );
 }

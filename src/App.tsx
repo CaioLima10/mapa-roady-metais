@@ -4,7 +4,6 @@ import axios from "axios";
 import "leaflet/dist/leaflet.css";
 import './styles.css'; 
 import { Form } from "./components/Form/index";
-import { Modal } from "./components/Modal/index";
 import { Map } from "./components/Map/index";
 import { calcularDistancia } from "./utils/calculateDistance";
 import { cepParaCoordenadas } from "./utils/cepCoordenadas";
@@ -59,9 +58,7 @@ export default function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      if(!calcularDistancia) {
-        setShowModal(true)
-      }
+
     try {
       const coords = await cepParaCoordenadas(cep);
       setCoordenadas(coords);
@@ -96,10 +93,7 @@ export default function App() {
         lojasProximas={lojasProximas}
         mapRef={mapRef}
       />
-      <Modal 
-        showModal={showModal} 
-        setShowModal={setShowModal}
-      />
+
     </div>
   );
 }

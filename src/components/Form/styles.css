@@ -258,6 +258,30 @@ img{
   }
 }
 
+.container-amount{
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.title-info{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.box-button-whats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+
 @media screen and (max-width: 680px) {
   .container-form {
     max-width: 100%;
