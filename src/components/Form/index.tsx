@@ -52,9 +52,11 @@ export function Form({
   const handleFormSubmit = (e: React.FormEvent) => {
     handleSubmit(e);
 
+    setPesquisou(false)
+
     setTimeout(() => {
       setPesquisou(true); 
-    },500)
+    },1000)
   };
 
   return (
